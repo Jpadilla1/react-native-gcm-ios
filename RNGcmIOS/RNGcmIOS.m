@@ -7,8 +7,8 @@
 //
 
 #import "RNGcmIOS.h"
-#import "RCTEventDispatcher.h"
-#import "RCTLog.h"
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTLog.h>
 
 @interface RNGcmIOS()
 

@@ -8,7 +8,6 @@ Pod::Spec.new do |s|
   s.homepage     = 'n/a'
   s.source       = { :git => "https://github.com/cmcewen/react-native-push-notification.git" }
   s.source_files = 'RNGcmIOS/*.{h,m}'
-  s.platform     = :ios, "7.0"
-  s.dependency 'React'
+  s.platform     = :ios, "8.0"
   s.dependency 'Google/CloudMessaging'
 end

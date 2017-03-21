@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A3B581101CD0410200334D11 /* RNGcmIOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A3B5810F1CD0410200334D11 /* RNGcmIOS.h */; };
 		A3B581121CD0410200334D11 /* RNGcmIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B581111CD0410200334D11 /* RNGcmIOS.m */; };
+		B4EDF0D356C32A6DD0878EE0 /* libPods-RNGcmIOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D348DB074851936076E9BC /* libPods-RNGcmIOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		084D4A2616596590AA5CAB65 /* Pods-RNGcmIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNGcmIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNGcmIOS/Pods-RNGcmIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		3971E6DB16042EEBE0DE2040 /* Pods-RNGcmIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNGcmIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNGcmIOS/Pods-RNGcmIOS.release.xcconfig"; sourceTree = "<group>"; };
+		94D348DB074851936076E9BC /* libPods-RNGcmIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNGcmIOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B5810C1CD0410200334D11 /* libRNGcmIOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNGcmIOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3B5810F1CD0410200334D11 /* RNGcmIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNGcmIOS.h; sourceTree = "<group>"; };
 		A3B581111CD0410200334D11 /* RNGcmIOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNGcmIOS.m; sourceTree = "<group>"; };
@@ -35,17 +39,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4EDF0D356C32A6DD0878EE0 /* libPods-RNGcmIOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C7FB271BC622A2CD5B12217 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				084D4A2616596590AA5CAB65 /* Pods-RNGcmIOS.debug.xcconfig */,
+				3971E6DB16042EEBE0DE2040 /* Pods-RNGcmIOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6ACA3A1B82CCF9A8AA17A3B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94D348DB074851936076E9BC /* libPods-RNGcmIOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A3B581031CD0410200334D11 = {
 			isa = PBXGroup;
 			children = (
 				A3B5810E1CD0410200334D11 /* RNGcmIOS */,
 				A3B5810D1CD0410200334D11 /* Products */,
+				2C7FB271BC622A2CD5B12217 /* Pods */,
+				6ACA3A1B82CCF9A8AA17A3B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,9 +97,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A3B581151CD0410200334D11 /* Build configuration list for PBXNativeTarget "RNGcmIOS" */;
 			buildPhases = (
+				1AB774009ADEA68A51B5A5B5 /* [CP] Check Pods Manifest.lock */,
 				A3B581081CD0410200334D11 /* Sources */,
 				A3B581091CD0410200334D11 /* Frameworks */,
 				A3B5810A1CD0410200334D11 /* CopyFiles */,
+				C8364F5648FACAD4CCC27D24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -116,6 +142,39 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AB774009ADEA68A51B5A5B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C8364F5648FACAD4CCC27D24 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNGcmIOS/Pods-RNGcmIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A3B581081CD0410200334D11 /* Sources */ = {
@@ -213,6 +272,7 @@
 		};
 		A3B581161CD0410200334D11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 084D4A2616596590AA5CAB65 /* Pods-RNGcmIOS.debug.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -222,6 +282,7 @@
 		};
 		A3B581171CD0410200334D11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3971E6DB16042EEBE0DE2040 /* Pods-RNGcmIOS.release.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Google/CloudMessaging.h>
-#import "RCTBridgeModule.h"
+#import <React/RCTBridgeModule.h>
 
 @interface RNGcmIOS : NSObject <GGLInstanceIDDelegate, RCTBridgeModule>
 
