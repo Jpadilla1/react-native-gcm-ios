@@ -13,6 +13,7 @@
 @interface RNGcmIOS()
 
 @property(nonatomic, strong) void (^registrationHandler)(NSString *registrationToken, NSError *error);
+@property(nonatomic, strong) void (^unregistrationHandler)(NSError *error);
 @property(nonatomic, strong) NSString* registrationToken;
 @property(nonatomic, readonly, strong) NSString *gcmSenderID;
 @property(nonatomic, readonly, strong) NSDictionary *registrationOptions;
@@ -68,6 +69,21 @@ RCT_EXPORT_METHOD(registerToken:(NSString *)deviceToken) {
         [data appendBytes:&whole_byte length:1];
     }
     return data;
+}
+
+RCT_EXPORT_METHOD(unregisterToken) {
+  
+  if ([[UIApplication sharedApplication] isRegisteredForRemoteNotifications]) {
+    [[UIApplication sharedApplication] unregisterForRemoteNotifications];
+    
+    
+    _unregistrationHandler = ^(NSError *error) {
+      printf("%s", error);
+      /* do nothing */
+    };
+    
+    [[GGLInstanceID sharedInstance] deleteTokenWithAuthorizedEntity: _gcmSenderID scope: kGGLInstanceIDScopeGCM handler: _unregistrationHandler];
+  }
 }
 
 -(void)handleRegistration:(NSString*)registrationToken withError:(NSError*)error {
