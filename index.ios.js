@@ -1,38 +1,39 @@
 import {
   NativeAppEventEmitter,
   NativeModules,
-  PushNotificationIOS,
+  PushNotificationIOS
 } from 'react-native';
 
 const RNGcmIOS = NativeModules.RNGcmIOS;
 
-const RNGcmRegistered = "RNGcmRegistered";
-const RNGcmRegistrationFailed = "RNGcmRegistrationFailed";
+const RNGcmRegistered = 'RNGcmRegistered';
+const RNGcmRegistrationFailed = 'RNGcmRegistrationFailed';
 
 let _listeners = new Map();
 let _registerListenersCount = 0;
 
 class GcmIOS {
   static addListener(type: string, handler: Function) {
-    if (!(type === 'register' || type === 'error')) throw new Error('GcmIOS listener type must either be register or error')
+    if (!(type === 'register' || type === 'error'))
+      throw new Error('GcmIOS listener type must either be register or error');
 
     let listener;
     if (type === 'register') {
       if (_registerListenersCount == 0) {
-        PushNotificationIOS.addEventListener('register', GcmIOS.registerToken)
+        PushNotificationIOS.addEventListener('register', GcmIOS.registerToken);
       }
       _registerListenersCount++;
 
       listener = NativeAppEventEmitter.addListener(
         RNGcmRegistered,
-        (gcmToken) => {
+        gcmToken => {
           handler(gcmToken.registrationToken);
         }
       );
     } else {
       listener = NativeAppEventEmitter.addListener(
         RNGcmRegistrationFailed,
-        (error) => {
+        error => {
           handler(error.error);
         }
       );
@@ -41,7 +42,8 @@ class GcmIOS {
   }
 
   static removeListener(type: string, handler: Function) {
-    if (!(type === 'register' || type === 'error')) throw new Error('GcmIOS listener type must either be register or error')
+    if (!(type === 'register' || type === 'error'))
+      throw new Error('GcmIOS listener type must either be register or error');
 
     let listener = _listeners.get(handler);
     if (!listener) {
@@ -50,7 +52,10 @@ class GcmIOS {
     if (type === 'register') {
       _registerListenersCount--;
       if (_registerListenersCount === 0) {
-        PushNotificationIOS.removeEventListener('register', GcmIOS.registerToken)
+        PushNotificationIOS.removeEventListener(
+          'register',
+          GcmIOS.registerToken
+        );
       }
     }
     listener.remove();
@@ -58,8 +63,12 @@ class GcmIOS {
   }
 
   static registerToken(token) {
-    RNGcmIOS.registerToken(token)
+    RNGcmIOS.registerToken(token);
+  }
+
+  static unRegisterToken() {
+    RNGcmIOS.unRegisterToken();
   }
 }
 
-export default GcmIOS
+export default GcmIOS;
