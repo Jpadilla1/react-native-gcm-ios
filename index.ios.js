@@ -66,8 +66,8 @@ class GcmIOS {
     RNGcmIOS.registerToken(token);
   }
 
-  static unRegisterToken() {
-    RNGcmIOS.unRegisterToken();
+  static unregisterToken() {
+    RNGcmIOS.unregisterToken();
   }
 }
 
